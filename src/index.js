@@ -1,5 +1,6 @@
 const config = require('config');
 const Jenkins = require('jenkins');
+const chalk = require('chalk');
 
 const jenkins = new Jenkins({
   baseUrl: `https://${config.get('username')}:${config.get('token')}@ci.biztech-dev.com/`,
@@ -13,7 +14,15 @@ function printJobs(jobs) {
     const name = job.fullDisplayName || job.fullName || job.name;
     const type = job._class.split('.').pop();
 
-    console.log(`${type}: ${name}${type === 'WorkflowJob' ? ' - ' + job.color : ''}`);
+    // Make it colorful if its a job
+    let colorizer;
+    if (type === 'WorkflowJob') {
+      colorizer = chalk[job.color] || chalk.underline;
+    } else {
+      colorizer = (text) => text
+    }
+
+    console.log(colorizer(`${type}: ${name}`));
 
     printJobs(job.jobs);
   });
