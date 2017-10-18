@@ -7,7 +7,7 @@ const jenkins = new Jenkins({
   promisify: true,
 });
 
-function printJobs(jobs) {
+function printJobs(jobs, prefixPadding = 0) {
   if (!jobs) return;
 
   jobs.forEach(job => {
@@ -22,9 +22,10 @@ function printJobs(jobs) {
       colorizer = (text) => text
     }
 
+    process.stdout.write(' '.repeat(prefixPadding));
     console.log(colorizer(`${type}: ${name}`));
 
-    printJobs(job.jobs);
+    printJobs(job.jobs, prefixPadding + 2);
   });
 };
 
