@@ -16,7 +16,7 @@ function printJobs(jobs) {
 };
 
 jenkins.job.list({ depth: 2 }).then((data) => {
-  printJobs(data);
+  printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);
 }).catch((err) => {
   console.error(err);
 });
