@@ -4,5 +4,8 @@
   "main": "src/index.js",
   "author": "Gio d'Amelio <giodamelio@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "config": "^1.27.0"
+  }
 }
