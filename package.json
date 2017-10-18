@@ -1,0 +1,8 @@
+{
+  "name": "jenkins_grid",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Gio d'Amelio <giodamelio@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
