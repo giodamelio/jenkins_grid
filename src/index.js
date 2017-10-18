@@ -6,8 +6,17 @@ const jenkins = new Jenkins({
   promisify: true,
 });
 
-jenkins.info().then((data) => {
-  console.log(data);
+function printJobs(jobs) {
+  if (!jobs) return;
+
+  jobs.forEach(job => {
+    console.log(job.fullDisplayName || job.fullName || job.name);
+    printJobs(job.jobs);
+  });
+};
+
+jenkins.job.list({ depth: 2 }).then((data) => {
+  printJobs(data);
 }).catch((err) => {
   console.error(err);
 });
