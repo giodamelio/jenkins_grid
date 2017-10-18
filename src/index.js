@@ -10,7 +10,11 @@ function printJobs(jobs) {
   if (!jobs) return;
 
   jobs.forEach(job => {
-    console.log(job.fullDisplayName || job.fullName || job.name);
+    const name = job.fullDisplayName || job.fullName || job.name;
+    const type = job._class.split('.').pop();
+
+    console.log(`${type}: ${name}${type === 'WorkflowJob' ? ' - ' + job.color : ''}`);
+
     printJobs(job.jobs);
   });
 };
