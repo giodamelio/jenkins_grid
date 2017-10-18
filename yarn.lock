@@ -9,6 +9,12 @@ config@^1.27.0:
     json5 "0.4.0"
     os-homedir "1.0.2"
 
+jenkins@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/jenkins/-/jenkins-0.20.0.tgz#9778d289508c04666ae5b8f557d9917c89c41ca2"
+  dependencies:
+    papi "^0.26.0"
+
 json5@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.4.0.tgz#054352e4c4c80c86c0923877d449de176a732c8d"
@@ -16,3 +22,7 @@ json5@0.4.0:
 os-homedir@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+
+papi@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/papi/-/papi-0.26.0.tgz#d6136a1492075ebc26452bd8e09e449980c47dd3"
