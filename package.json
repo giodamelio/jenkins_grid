@@ -5,6 +5,9 @@
   "author": "Gio d'Amelio <giodamelio@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
     "config": "^1.27.0"
   }
