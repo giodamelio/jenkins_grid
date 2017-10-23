@@ -15,15 +15,21 @@ function printJobs(jobs, prefixPadding = 0) {
     const type = job._class.split('.').pop();
 
     // Make it colorful if its a job
-    let colorizer;
+    let colorizer, isUnknownStatus;
     if (type === 'WorkflowJob') {
-      colorizer = chalk[job.color] || chalk.underline;
+      if (chalk[job.color]) {
+        colorizer = chalk[job.color];
+        isUnknownStatus = false;
+      } else {
+        colorizer = chalk.underline;
+        isUnknownStatus = true;
+      }
     } else {
       colorizer = (text) => text
     }
 
     process.stdout.write(' '.repeat(prefixPadding));
-    console.log(colorizer(`${type}: ${name}`));
+    console.log(colorizer(`${type}: ${name}${isUnknownStatus ? ' (status: ' + job.color + ')' : ''}`));
 
     printJobs(job.jobs, prefixPadding + 2);
   });
