@@ -21,7 +21,12 @@ function printJobs(jobs, prefixPadding = 0) {
         colorizer = chalk[job.color];
         isUnknownStatus = false;
       } else {
-        colorizer = chalk.underline;
+        if (job.color === 'aborted') {
+          colorizer = chalk.gray.underline;
+        } else {
+          colorizer = chalk.underline;
+        }
+
         isUnknownStatus = true;
       }
     } else {
