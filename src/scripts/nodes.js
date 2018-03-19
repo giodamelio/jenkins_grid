@@ -24,12 +24,14 @@ function notifyOfflineNodes(nodes) {
   });
 }
 
-jenkins.node
-  .list()
-  .then(data => {
-    printNodes(data);
-    notifyOfflineNodes(data);
-  })
-  .catch(err => {
-    console.error(err);
-  });
+module.exports.run = function() {
+  jenkins.node
+    .list()
+    .then(data => {
+      printNodes(data);
+      notifyOfflineNodes(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};

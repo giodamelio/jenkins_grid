@@ -13,7 +13,7 @@ if (argv._.length !== 1) {
 }
 
 try {
-  require(`./scripts/${argv._[0]}`);
+  require(`./scripts/${argv._[0]}`).run();
 } catch (err) {
   help();
 }

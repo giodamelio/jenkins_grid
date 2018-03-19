@@ -41,11 +41,13 @@ function printJobs(jobs, prefixPadding = 0) {
   });
 }
 
-jenkins.job
-  .list({ depth: 2 })
-  .then(data => {
-    printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);
-  })
-  .catch(err => {
-    console.error(err);
-  });
+module.exports.run = function() {
+  jenkins.job
+    .list({ depth: 2 })
+    .then(data => {
+      printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
