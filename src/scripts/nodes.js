@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const jenkins = require('./jenkins');
+const jenkins = require('../jenkins');
 
 function printNodes(nodes) {
   nodes.forEach(node => {

@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 
-const jenkins = require('./jenkins');
+const jenkins = require('../jenkins');
 
 function printJobs(jobs, prefixPadding = 0) {
   if (!jobs) return;
