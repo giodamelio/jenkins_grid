@@ -3,7 +3,9 @@ const Jenkins = require('jenkins');
 const chalk = require('chalk');
 
 const jenkins = new Jenkins({
-  baseUrl: `https://${config.get('username')}:${config.get('token')}@ci.biztech-dev.com/`,
+  baseUrl: `https://${config.get('username')}:${config.get(
+    'token',
+  )}@ci.biztech-dev.com/`,
   promisify: true,
 });
 
@@ -30,18 +32,27 @@ function printJobs(jobs, prefixPadding = 0) {
         isUnknownStatus = true;
       }
     } else {
-      colorizer = (text) => text
+      colorizer = text => text;
     }
 
     process.stdout.write(' '.repeat(prefixPadding));
-    console.log(colorizer(`${type}: ${name}${isUnknownStatus ? ' (status: ' + job.color + ')' : ''}`));
+    console.log(
+      colorizer(
+        `${type}: ${name}${
+          isUnknownStatus ? ' (status: ' + job.color + ')' : ''
+        }`,
+      ),
+    );
 
     printJobs(job.jobs, prefixPadding + 2);
   });
-};
+}
 
-jenkins.job.list({ depth: 2 }).then((data) => {
-  printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);
-}).catch((err) => {
-  console.error(err);
-});
+jenkins.job
+  .list({ depth: 2 })
+  .then(data => {
+    printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);
+  })
+  .catch(err => {
+    console.error(err);
+  });
