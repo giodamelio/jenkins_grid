@@ -25,7 +25,7 @@ function notifyOfflineNodes(nodes) {
 }
 
 module.exports.run = function() {
-  jenkins.node
+  return jenkins.node
     .list()
     .then(data => {
       printNodes(data);

@@ -42,7 +42,7 @@ function printJobs(jobs, prefixPadding = 0) {
 }
 
 module.exports.run = function() {
-  jenkins.job
+  return jenkins.job
     .list({ depth: 2 })
     .then(data => {
       printJobs(data.find(job => job.name === 'Biz Tech Engines').jobs);

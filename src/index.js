@@ -13,7 +13,27 @@ if (argv._.length !== 1) {
 }
 
 try {
-  require(`./scripts/${argv._[0]}`).run();
+  const script = require(`./scripts/${argv._[0]}`);
+
+  if (argv.repeat) {
+    const interval = Number.isInteger(argv.repeat) ? argv.repeat : 60;
+
+    // Run it once at the beginning
+    script.run().then(() => {
+      // Print a line to differentiate between runs
+      console.log('-'.repeat(process.stdout.columns));
+    });
+
+    // Then run it every n seconds
+    setInterval(() => {
+      script.run().then(() => {
+        // Print a line to differentiate between runs
+        console.log('-'.repeat(process.stdout.columns));
+      });
+    }, interval * 1000);
+  } else {
+    script.run();
+  }
 } catch (err) {
   help();
 }
