@@ -59,6 +59,10 @@ papi@^0.26.0:
   version "0.26.0"
   resolved "https://registry.yarnpkg.com/papi/-/papi-0.26.0.tgz#d6136a1492075ebc26452bd8e09e449980c47dd3"
 
+prettier@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"
+
 supports-color@^4.0.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
