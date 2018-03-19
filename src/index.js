@@ -1,13 +1,6 @@
-const config = require('config');
-const Jenkins = require('jenkins');
 const chalk = require('chalk');
 
-const jenkins = new Jenkins({
-  baseUrl: `https://${config.get('username')}:${config.get(
-    'token',
-  )}@ci.biztech-dev.com/`,
-  promisify: true,
-});
+const jenkins = require('./jenkins');
 
 function printJobs(jobs, prefixPadding = 0) {
   if (!jobs) return;
