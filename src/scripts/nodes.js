@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const displayNotification = require('display-notification');
 
 const jenkins = require('../jenkins');
 
@@ -12,10 +13,22 @@ function printNodes(nodes) {
   });
 }
 
+function notifyOfflineNodes(nodes) {
+  nodes.forEach(node => {
+    if (node.offline) {
+      displayNotification({
+        title: 'Jenkins Node Offline',
+        text: node.displayName,
+      });
+    }
+  });
+}
+
 jenkins.node
   .list()
   .then(data => {
     printNodes(data);
+    notifyOfflineNodes(data);
   })
   .catch(err => {
     console.error(err);

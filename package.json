@@ -12,6 +12,7 @@
   "dependencies": {
     "chalk": "^2.2.0",
     "config": "^1.27.0",
+    "display-notification": "^2.0.0",
     "jenkins": "^0.20.0",
     "minimist": "^1.2.0"
   },
